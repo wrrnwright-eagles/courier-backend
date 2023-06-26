@@ -31,17 +31,5 @@ db.session.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
-// foreign key for itinerary
-db.user.hasMany(
-  db.order,
-  { as: "order" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
-db.itinerary.belongsTo(
-  db.user,
-  { as: "user" },
-  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
-);
-
 
 module.exports = db;

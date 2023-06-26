@@ -15,7 +15,7 @@ db.sequelize.sync()
   });
 
 var corsOptions = {
-  origin: "http://localhost:8081",
+  origin: "http://localhost:8080",
 };
 
 app.use(cors(corsOptions));
@@ -34,8 +34,9 @@ app.get("/", (req, res) => {
 
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes.js")(app);
-require("./app/routes/forgotPassword.routes")(app);
-require("./app/routes/subscribe.routes")(app);
+require("./app/routes/customer.routes.js")(app);
+require("./app/routes/courier.routes.js")(app);
+
 
 
 
