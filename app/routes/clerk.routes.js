@@ -15,6 +15,6 @@ module.exports = (app) => {
   
     router.delete("/clerks/", [authenticateRoute], Clerk.deleteAll);
   
-    app.use("/clerkapi", router);
+    app.use("/courierapi", router);
   };
   
