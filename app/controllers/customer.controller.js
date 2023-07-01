@@ -54,7 +54,7 @@ exports.findAll = (req, res) => {
       }
     : null;
 
-  Customer.findAll({ where: condition, order: [["Customer Number", "ASC"]] })
+  Customer.findAll({ where: condition, order: [["customerNumber", "ASC"]] })
     .then((data) => {
       res.send(data);
     })

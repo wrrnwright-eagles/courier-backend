@@ -44,7 +44,7 @@ exports.findAll = (req, res) => {
       }
     : null;
 
-  Courier.findAll({ where: condition, order: [["Courier Number", "ASC"]] })
+  Courier.findAll({ where: condition, order: [["courierNumber", "ASC"]] })
     .then((data) => {
       res.send(data);
     })
