@@ -37,6 +37,7 @@ require("./app/routes/user.routes.js")(app);
 require("./app/routes/customer.routes.js")(app);
 require("./app/routes/courier.routes.js")(app);
 require("./app/routes/clerk.routes.js")(app);
+require("./app/routes/path.routes.js")(app);
 
 
 

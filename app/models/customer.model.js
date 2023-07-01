@@ -8,7 +8,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      location: {
+      locationDescription: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      locationNode: {
         type: Sequelize.STRING,
         allowNull: false,
       },

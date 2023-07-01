@@ -13,8 +13,12 @@ exports.create = (req, res) => {
     const error = new Error("Name cannot be empty for Customer!");
     error.statusCode = 400;
     throw error;
-  } else if (req.body.location === undefined) {
-    const error = new Error("location cannot be empty for Customer!");
+  } else if (req.body.locationDescription === undefined) {
+    const error = new Error("Location Description cannot be empty for Customer!");
+    error.statusCode = 400;
+    throw error;
+  } else if (req.body.locationNode === undefined) {
+    const error = new Error("Location Node cannot be empty for Customer!");
     error.statusCode = 400;
     throw error;
   } else if (req.body.deliveryInstructions === undefined) {
@@ -27,7 +31,8 @@ exports.create = (req, res) => {
   const customer = {
     customerNumber: req.body.customerNumber,
     name: req.body.name,
-    location: req.body.location,
+    locationDescription: req.body.locationDescription,
+    locationNode: req.body.locationNode,
     deliveryInstructions: req.body.deliveryInstructions,
   };
   // Save Customer in the database

@@ -20,6 +20,7 @@ db.courier = require("./courier.model.js")(sequelize, Sequelize);
 db.customer = require("./customer.model.js")(sequelize, Sequelize);
 db.clerk = require("./clerk.model.js")(sequelize, Sequelize);
 db.order = require("./order.model.js")(sequelize, Sequelize);
+db.path = require("./path.model.js")(sequelize, Sequelize);
 
 
 

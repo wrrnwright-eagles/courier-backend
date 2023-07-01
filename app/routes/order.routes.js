@@ -21,5 +21,5 @@ module.exports = (app) => {
     // Delete all Orders
     router.delete("/orders/", [authenticateRoute], Order.deleteAll);
   
-    app.use("/orderapi", router);
+    app.use("/courierapi", router);
   };
