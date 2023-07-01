@@ -40,7 +40,7 @@ exports.findAll = (req, res) => {
       }
     : null;
 
-  Clerk.findAll({ where: condition, order: [["Clerk Number", "ASC"]] })
+  Clerk.findAll({ where: condition, order: [["clerkNumber", "ASC"]] })
     .then((data) => {
       res.send(data);
     })
