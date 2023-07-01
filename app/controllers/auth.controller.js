@@ -33,6 +33,8 @@ exports.login = async (req, res) => {
         id: user.id,
         token: token,
         isAdmin: user.isAdmin,
+        isClerk: user.isClerk,
+        isCourier: user.isCourier,
       };
       res.send(userInfo);
     });
