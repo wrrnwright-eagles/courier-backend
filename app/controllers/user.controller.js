@@ -32,7 +32,9 @@ exports.create = async (req, res) => {
       email,
       password: hash,
       salt: salt,
-      isAdmin: false 
+      isAdmin: false,
+      isClerk: false,
+      isCourier: false 
     };
 
     // Save User in the database
@@ -57,6 +59,8 @@ exports.create = async (req, res) => {
       lastName: user.lastName,
       id: user.id,
       isAdmin: user.isAdmin, // Here is the addition of isAdmin
+      isClerk: user.isClerk, // Here is the addition of isClerk
+      isCourier: user.isCourier, // Here is the addition of isCourier
       token: token,
     };
     return res.send(userInfo);

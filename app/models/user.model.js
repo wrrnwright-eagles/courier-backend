@@ -25,6 +25,16 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: true, 
       defaultValue: false,
     },
+    isClerk: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true, 
+      defaultValue: false,
+    },
+    isCourier: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true, 
+      defaultValue: false,
+    }
   });
 
   return User;
