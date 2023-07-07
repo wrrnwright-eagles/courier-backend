@@ -17,7 +17,6 @@ exports.create = (req, res) => {
     time: req.body.time,
     pickup: req.body.pickup,
     delivery: req.body.delivery,
-    courier: req.body.courier,
     blocks: req.body.blocks,
     price: req.body.price,
   };

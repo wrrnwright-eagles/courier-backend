@@ -16,13 +16,9 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      courier: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       blocks: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       price: {
         type: Sequelize.DECIMAL,
