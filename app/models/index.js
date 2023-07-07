@@ -36,5 +36,26 @@ db.session.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+// foreign key for order
+db.order.hasMany(
+  db.customer,
+  { as: "customer" }, 
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+db.customer.belongsTo(
+  db.order,
+  { as: "order" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+db.order.hasMany(
+  db.courier,
+  { as: "courier" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+db.courier.belongsTo(
+  db.order,
+  { as: "order" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
 
 module.exports = db;
