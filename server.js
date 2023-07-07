@@ -34,7 +34,8 @@ app.get("/", (req, res) => {
 
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes.js")(app);
-require("./app/routes/customer.routes.js")(app);
+require("./app/routes/pickupCustomer.routes.js")(app);
+require("./app/routes/deliveryCustomer.routes.js")(app);
 require("./app/routes/courier.routes.js")(app);
 require("./app/routes/clerk.routes.js")(app);
 require("./app/routes/path.routes.js")(app);
