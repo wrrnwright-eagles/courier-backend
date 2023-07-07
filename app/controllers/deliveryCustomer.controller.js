@@ -1,34 +1,34 @@
 const db = require("../models");
-const Customer = db.customer;
+const DeliveryCustomer = db.deliveryCustomer;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Activity
 exports.create = (req, res) => {
   // Validate request
   if (req.body.customerNumber === undefined) {
-    const error = new Error("Customer Number cannot be empty for Customer!");
+    const error = new Error("Customer Number cannot be empty for Delivery Customer!");
     error.statusCode = 400;
     throw error;
   } else if (req.body.name === undefined) {
-    const error = new Error("Name cannot be empty for Customer!");
+    const error = new Error("Name cannot be empty for Delivery Customer!");
     error.statusCode = 400;
     throw error;
   } else if (req.body.locationDescription === undefined) {
-    const error = new Error("Location Description cannot be empty for Customer!");
+    const error = new Error("Location Description cannot be empty for Delivery Customer!");
     error.statusCode = 400;
     throw error;
   } else if (req.body.locationNode === undefined) {
-    const error = new Error("Location Node cannot be empty for Customer!");
+    const error = new Error("Location Node cannot be empty for Delivery Customer!");
     error.statusCode = 400;
     throw error;
   } else if (req.body.deliveryInstructions === undefined) {
-    const error = new Error("Delivery Instructions cannot be empty for Customer!");
+    const error = new Error("Delivery Instructions cannot be empty for Delivery Customer!");
     error.statusCode = 400;
     throw error;
   }
 
   // Create a Customer
-  const customer = {
+  const deliveryCustomer = {
     customerNumber: req.body.customerNumber,
     name: req.body.name,
     locationDescription: req.body.locationDescription,
@@ -36,7 +36,7 @@ exports.create = (req, res) => {
     deliveryInstructions: req.body.deliveryInstructions,
   };
   // Save Customer in the database
-  Customer.create(customer)
+  DeliveryCustomer.create(deliveryCustomer)
     .then((data) => {
       res.send(data);
     })
@@ -59,7 +59,7 @@ exports.findAll = (req, res) => {
       }
     : null;
 
-  Customer.findAll({ where: condition, order: [["customerNumber", "ASC"]] })
+  DeliveryCustomer.findAll({ where: condition, order: [["customerNumber", "ASC"]] })
     .then((data) => {
       res.send(data);
     })
@@ -75,7 +75,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Customer.findByPk(id)
+  DeliveryCustomer.findByPk(id)
     .then((data) => {
       res.send(data);
     })
@@ -90,7 +90,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Customer.update(req.body, {
+  DeliveryCustomer.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -115,7 +115,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Customer.destroy({
+  DeliveryCustomer.destroy({
     where: { id: id },
   })
     .then((number) => {
@@ -138,7 +138,7 @@ exports.delete = (req, res) => {
 
 // Delete all Activities from the database.
 exports.deleteAll = (req, res) => {
-  Customer.destroy({
+  DeliveryCustomer.destroy({
     where: {},
     truncate: false,
   })
