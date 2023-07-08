@@ -7,6 +7,11 @@ module.exports = (app) => {
 
   router.get("/orders/", Order.findAll);
 
+  router.get(
+    "/orders/:id/ordersWithPickupCustomers/",
+    Order.findAllForOrderWithPickupCustomers
+  );
+
   router.get("/orders/:id", Order.findOne);
 
   router.put("/orders/:id", [authenticateRoute], Order.update);

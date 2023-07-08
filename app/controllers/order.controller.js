@@ -1,5 +1,6 @@
 const db = require("../models");
 const Order = db.order;
+const pickupCustomer = db.pickupCustomer;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Order
@@ -55,6 +56,29 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message: err.message || "Some error occurred while retrieving orders.",
+      });
+    });
+};
+
+exports.findAllForOrderWithPickupCustomers = (req, res) => {
+  const id = req.params.id;
+  Order.findAll({
+    where: { id: id},
+    include: [
+      {
+        model: pickupCustomer,
+        as: "pickupCustomer"
+      },
+    ],
+    order: [["id", "ASC"]],
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: 
+          err.message || "Error occurred while retrieving pickupCustomers for an order."
       });
     });
 };
