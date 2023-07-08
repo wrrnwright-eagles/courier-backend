@@ -5,8 +5,20 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Order
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.date || !req.body.time || !req.body.pickup || !req.body.delivery || !req.body.courier || req.body.blocks === undefined || req.body.price === undefined) {
-    const error = new Error("All fields must be filled out!");
+  if (!req.body.date) {
+    const error = new Error("Date cannot be empty for Order");
+    error.statusCode = 400;
+    throw error;
+  } else if (!req.body.time) {
+    const error = new Error("Time cannot be empty for Order");
+    error.statusCode = 400;
+    throw error;
+  } else if (!req.body.blocks) {
+    const error = new Error("Blocks cannot be empty for Order");
+    error.statusCode = 400;
+    throw error;
+  } else if (!req.body.price) {
+    const error = new Error("Price cannot be empty for Order");
     error.statusCode = 400;
     throw error;
   }
@@ -15,10 +27,11 @@ exports.create = (req, res) => {
   const order = {
     date: req.body.date,
     time: req.body.time,
-    pickup: req.body.pickup,
-    delivery: req.body.delivery,
     blocks: req.body.blocks,
     price: req.body.price,
+    pickupCustomerId: req.body.pickupCustomerId,
+    deliveryCustomerId: req.body.deliveryCustomerId,
+    courierId: req.body.courierId,
   };
 
   // Save Order in the database
