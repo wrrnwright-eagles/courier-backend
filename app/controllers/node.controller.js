@@ -1,26 +1,23 @@
 const db = require("../models");
-const Path = db.path;
+const Node = db.node;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Path
+// Create and Save a new Node
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.startLocation || !req.body.endLocation || !req.body.weight || !req.body.instructions ) {
+  if (!req.body.node) {
     const error = new Error("All fields must be filled out!");
     error.statusCode = 400;
     throw error;
   }
 
-  // Create an Order
+  // Create an Node
   const node = {
-    startLocation: req.body.startLocation,
-    endLocation: req.body.endLocation,
-    weight: req.body.weight,
-    instructions: req.body.instructions,
+    node: req.body.node,
   };
 
-  // Save Path in the database
-  Path.create(path)
+  // Save Node in the database
+  Node.create(node)
     .then((data) => {
       res.send(data);
     })
@@ -31,9 +28,9 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Paths from the database.
+// Retrieve all Nodes from the database.
 exports.findAll = (req, res) => {
-  Path.findAll()
+  Node.findAll()
     .then((data) => {
       res.send(data);
     })
@@ -44,11 +41,11 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Path with an id
+// Find a single Node with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Path.findByPk(id)
+  Node.findByPk(id)
     .then((data) => {
       res.send(data);
     })
@@ -59,11 +56,11 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update an Path by the id in the request
+// Update an Node by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Path.update(req.body, {
+  Node.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -84,11 +81,11 @@ exports.update = (req, res) => {
     });
 };
 
-// Delete an Path with the specified id in the request
+// Delete an Node with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Path.destroy({
+  Node.destroy({
     where: { id: id },
   })
     .then((number) => {
@@ -109,9 +106,9 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all Paths from the database.
+// Delete all Nodes from the database.
 exports.deleteAll = (req, res) => {
-  Path.destroy({
+  Node.destroy({
     where: {},
     truncate: false,
   })

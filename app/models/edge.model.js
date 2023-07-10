@@ -1,10 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
-    const Path = sequelize.define("path", {
-      startLocation: {
+    const Edge = sequelize.define("edge", {
+      fromNode: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      endLocation: {
+      toNode: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -18,6 +18,6 @@ module.exports = (sequelize, Sequelize) => {
       }
     });
   
-    return Path;
+    return Edge;
   };
   
