@@ -23,7 +23,7 @@ db.clerk = require("./clerk.model.js")(sequelize, Sequelize);
 db.order = require("./order.model.js")(sequelize, Sequelize);
 db.edge = require("./edge.model.js")(sequelize, Sequelize);
 db.node = require("./node.model.js")(sequelize, Sequelize);
-
+db.path = require("./path.model.js")(sequelize, Sequelize);
 
 // foreign key for session
 db.user.hasMany(
