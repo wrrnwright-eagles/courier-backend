@@ -34,6 +34,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: true,
     },
+    pathId: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+    },
   });
 
   return Order;

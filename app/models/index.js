@@ -68,5 +68,15 @@ db.order.belongsTo(
   { as: "courier" },
   { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
 );
+db.path.hasMany(
+  db.order,
+  { as: "order" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+db.order.belongsTo(
+  db.path,
+  { as: "path" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
 
 module.exports = db;
