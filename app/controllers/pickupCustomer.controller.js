@@ -90,7 +90,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Customer.update(req.body, {
+  PickupCustomer.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -110,6 +110,7 @@ exports.update = (req, res) => {
       });
     });
 };
+
 
 // Delete a Customer with the specified id in the request
 exports.delete = (req, res) => {
