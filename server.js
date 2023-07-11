@@ -41,6 +41,7 @@ require("./app/routes/clerk.routes.js")(app);
 require("./app/routes/edge.routes.js")(app);
 require("./app/routes/order.routes.js")(app);
 require("./app/routes/node.routes.js")(app);
+require("./app/routes/path.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3201;
