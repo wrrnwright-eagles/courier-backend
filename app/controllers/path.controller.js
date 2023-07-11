@@ -9,10 +9,6 @@ exports.create = (req, res) => {
     const error = new Error("Path cannot be empty for Path!");
     error.statusCode = 400;
     throw error;
-  } else if (req.body.orderId === undefined) {
-    const error = new Error("Order Id cannot be empty for Path!");
-    error.statusCode = 400;
-    throw error;
   }
 
   // Create a Path
