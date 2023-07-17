@@ -32,6 +32,7 @@ exports.create = (req, res) => {
     price: req.body.price,
     pickupCustomerId: req.body.pickupCustomerId,
     deliveryCustomerId: req.body.deliveryCustomerId,
+    pathId: req.body.pathId,
     courierId: req.body.courierId,
   };
 
