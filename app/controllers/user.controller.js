@@ -247,3 +247,14 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
+exports.findCourierUsers = (req, res) => {
+  User.findAll({ where: { isCourier: true } })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving courier users.",
+      });
+    });
+};
