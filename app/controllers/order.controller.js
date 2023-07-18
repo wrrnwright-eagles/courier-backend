@@ -5,6 +5,7 @@ const Op = db.Sequelize.Op;
 
 // Create and Save a new Order
 exports.create = (req, res) => {
+  console.log(req.body);
   // Validate request
   if (!req.body.date) {
     const error = new Error("Date cannot be empty for Order");
