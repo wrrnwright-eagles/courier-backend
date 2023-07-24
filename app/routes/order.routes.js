@@ -7,10 +7,13 @@ module.exports = (app) => {
 
   router.get("/orders/", Order.findAll);
 
+  router.put("/orders/:id/assign", Order.assignToCourier);
+
   router.get(
     "/orders/:id/ordersWithPickupCustomers/",
     Order.findAllForOrderWithPickupCustomers
   );
+
 
   router.get("/orders/:id", Order.findOne);
 
@@ -21,5 +24,6 @@ module.exports = (app) => {
   router.delete("/orders/", [authenticateRoute], Order.deleteAll);
 
   app.use("/courierapi", router);
+
 };
 

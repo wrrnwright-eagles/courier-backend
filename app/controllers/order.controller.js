@@ -165,3 +165,30 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
+
+
+exports.assignToCourier = (req, res) => {
+  // Extract the order ID and courier ID from the request
+  const orderId = req.params.id;
+  const courierId = req.body.courierId;  // Assuming the courier ID is sent in the request body
+
+  // Perform database operations to assign the order to the courier...
+  Order.update({ courierId: courierId }, {
+    where: { id: orderId }
+  })
+  .then(num => {
+    if (num == 1) {
+      res.send({ message: 'Order assigned to courier successfully.' });
+    } else {
+      res.send({
+        message: `Cannot assign order with id=${orderId} to courier. Maybe order was not found!`,
+      });
+    }
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: err.message || `Error updating Order with id=${orderId}`
+    });
+  });
+};
+
