@@ -10,10 +10,16 @@ exports.create = (req, res) => {
     error.statusCode = 400;
     throw error;
   }
+  if (!req.body.streetName) {
+    const error = new Error("Street Name must be filled out!");
+    error.statusCode = 400;
+    throw error;
+  }
 
   // Create an Node
   const node = {
     node: req.body.node,
+    streetName: req.body.streetName,
   };
 
   // Save Node in the database
