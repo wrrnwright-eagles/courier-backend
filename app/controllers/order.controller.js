@@ -191,4 +191,27 @@ exports.assignToCourier = (req, res) => {
     });
   });
 };
+exports.markComplete = (req, res) => {
+  const id = req.params.id;
 
+  // You may need to adapt this code according to how you want to mark an order as complete in your database.
+  Order.update({ status: 'complete' }, {
+    where: { id: id },
+  })
+  .then((num) => {
+    if (num == 1) {
+      res.send({
+        message: "Order was marked as complete successfully.",
+      });
+    } else {
+      res.send({
+        message: `Cannot mark Order with id=${id} as complete. Maybe Order was not found or req.body is empty!`,
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message: err.message || "Error marking Order as complete with id=" + id,
+    });
+  });
+};
