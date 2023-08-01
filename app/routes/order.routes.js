@@ -23,10 +23,9 @@ module.exports = (app) => {
 
   router.delete("/orders/", [authenticateRoute], Order.deleteAll);
 
-  app.use("/courierapi", router);
-  
   router.put("/orders/:id/complete", Order.markComplete);
 
+  app.use("/courierapi", router);
 
 };
 
