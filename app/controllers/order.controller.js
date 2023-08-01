@@ -193,9 +193,7 @@ exports.assignToCourier = (req, res) => {
 };
 exports.markComplete = (req, res) => {
   const id = req.params.id;
-
-  // You may need to adapt this code according to how you want to mark an order as complete in your database.
-  Order.update({ status: 'complete' }, {
+  Order.update({ status: 'completed' }, {
     where: { id: id },
   })
   .then((num) => {
@@ -215,3 +213,4 @@ exports.markComplete = (req, res) => {
     });
   });
 };
+
